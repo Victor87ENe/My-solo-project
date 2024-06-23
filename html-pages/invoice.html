@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <link rel="stylesheet" href="/css-files/invoice.css">
+</head>
+<body>
+    <h2>Invoice </h2>
+    <h3>
+        Pay to Access Bank 
+         0036523734
+        Account name: Ene Victor Chidiebere
+    </h3>
+    <i><span style="font-size: 16px; color: gray">(Our Agent will be at your doorstep in less than 180minute after uploading your evidence of payment)</span></i>
+    <p id="selectedService"></p>
+    <p id="servicePrice"></p>
+    <p id="selectedOrganize"></p>
+    <p id="organizePrice"></p>
+    <p id="areaTextValue"></p>
+    <p id="result"></p>
+    <p id="selectedFrequency"></p>
+    
+    
+    <p id="totalCost"></p>
+    <p id="totalWithVat" style="color: #ff6f00; font-size: larger;"></p>
+    <p id="inputValue"></p>
+    <p id="areaText1Value"></p>
+
+     <a href=""><button class="btn">upload payment evidence<input type="file" required></button></a>
+   
+    <a href="/index.html"><button class="btn" id="print-button">submit/print</button></a>
+   
+    <script>
+        // Retrieve values from localStorage
+        const selectValue = localStorage.getItem('selectValue');
+        const select1Value = localStorage.getItem('select1Value');
+        const select2Value = localStorage.getItem('select2Value');
+        const servicePrice = localStorage.getItem('servicePrice');
+        const organizePrice = localStorage.getItem('organizePrice');
+        const totalCost = localStorage.getItem('totalCost');
+        const vat = localStorage.getItem('vat');
+        const totalWithVat = localStorage.getItem('totalWithVat');
+        const inputValue = localStorage.getItem('inputValue');
+        const areaText1Value = localStorage.getItem('areaText1Value');
+        const areaTextValue = localStorage.getItem('areaTextValue');
+        
+
+               // Display message based on areaTextValuemu (Multiple choice intake)
+        if (areaTextValue && areaTextValue.trim() !== '') {
+            document.getElementById('result').textContent = 'For Multiple Choice, Please call the agent on 09151997068 for actual price';
+        } else {
+            document.getElementById('result').textContent = 'None';
+        }
+
+                
+
+        // Display the retrieved values
+        document.getElementById('selectedService').textContent = `Selected Service: ${selectValue || 'None'}`;
+         document.getElementById('servicePrice').textContent = `Service Price: $${parseFloat(servicePrice).toFixed(2)}`;
+        document.getElementById('selectedOrganize').textContent = `Selected Organizing Service: ${select1Value || 'None'}`;
+        document.getElementById('organizePrice').textContent = `Organizing Service Price: $${parseFloat(organizePrice).toFixed(2)}`;
+        document.getElementById('areaTextValue').textContent = ` Multiple choices:${areaTextValue} `; 
+
+        document.getElementById('selectedFrequency').textContent = `Selected Frequency: ${select2Value || 'None'}`;
+       
+        document.getElementById('totalCost').textContent = `Total Cost (before VAT): $${parseFloat(totalCost).toFixed(2)}`;
+        document.getElementById('inputValue').textContent = `Phone to call while comming:${inputValue}`;
+        document.getElementById('areaText1Value').textContent = `Address of house to be clean:${areaText1Value}`;
+        document.getElementById('totalWithVat').textContent = `Total Cost (with VAT): $${parseFloat(totalWithVat).toFixed(2)}`;
+
+
+
+
+
+        // Get the button element
+const printButton = document.getElementById('print-button');
+
+// Add an event listener to the button
+printButton.addEventListener('click', () => {
+  // Get the results
+  const selectedService = document.getElementById('selectedService').textContent;
+  const servicePrice = document.getElementById('servicePrice').textContent;
+  const selectedOrganize = document.getElementById('selectedOrganize').textContent;
+  const organizePrice = document.getElementById('organizePrice').textContent;
+  const areaTextValue = document.getElementById('areaTextValue').textContent;
+  const result = document.getElementById('result').textContent;
+  const selectedFrequency = document.getElementById('selectedFrequency').textContent;
+  const totalCost = document.getElementById('totalCost').textContent;
+  const totalWithVat = document.getElementById('totalWithVat').textContent;
+  const inputValue = document.getElementById('inputValue').textContent;
+  const areaText1Value = document.getElementById('areaText1Value').textContent;
+
+  // Print the results
+  const printContent = `
+    Selected Service: ${selectedService}
+    Service Price: ${servicePrice}
+    Selected Organize: ${selectedOrganize}
+    Organize Price: ${organizePrice}
+    Area Text Value: ${areaTextValue}
+    Result: ${result}
+    Selected Frequency: ${selectedFrequency}
+    Total Cost: ${totalCost}
+    Total With Vat: ${totalWithVat}
+    Input Value: ${inputValue}
+    Area Text 1 Value: ${areaText1Value}
+  `;
+  window.print(printContent);
+
+  // Save the results to the database
+  // (Replace with your actual database API)
+  fetch('/save-results', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      selectedService,
+      servicePrice,
+      selectedOrganize,
+      organizePrice,
+      areaTextValue,
+      result,
+      selectedFrequency,
+      totalCost,
+      totalWithVat,
+      inputValue,
+      areaText1Value
+    })
+  })
+  .then(response => response.json())
+  .then(data => console.log('Results saved successfully!'))
+  .catch(error => console.error('Error saving results:', error));
+
+    // Redirect to solo.html after printing
+    window.onafterprint = function() {
+                window.location.href = 'solo.html';
+            };
+
+});
+
+
+    </script>
+</body>
+</html>

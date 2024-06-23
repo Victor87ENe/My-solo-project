@@ -1,0 +1,191 @@
+body{
+    background-color: aquamarine;
+    text-align: center;
+    margin-top: 20px;
+}
+.heading{
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    color: white;
+}
+
+
+.cotainer{
+   background-image: url(/solo-img/pexels-liliana-drew-9462143.jpg);
+   background-size: cover;
+   background-position: center;
+   height: 100vh;
+   background-repeat: no-repeat;
+   background-position-y: bottom;
+   background-attachment: fixed; 
+   
+    h1{
+        text-align: center;
+        /* color: #f58803; */
+        color: rgb(39, 8, 243);;
+        
+    }
+  
+
+}
+.goUp{
+    text-align: right;
+}
+
+.heading{
+    background-image: url(/solo-img/pexels-tima-miroshnichenko-6195278.jpg);
+    background-size: 800px;
+    /* background-position: center; */
+    background-size: cover;
+    height: 150vh;
+    background-repeat: no-repeat;
+    background-position-y: center; 
+    
+    h1,h4{
+        color: black;
+    }
+}
+
+.la-container{
+   background-image: url(/solo-img/pexels-tima-miroshnichenko-6195210.jpg);
+   background-size: cover;
+   background-position-x: bottom;
+   height: 100vh;
+   background-repeat: no-repeat;
+   background-position-y: center;
+   background-attachment: fixed; 
+   h1,p{
+    text-align: center;
+    color: white;
+    padding-top: 40px;
+   }
+   
+}
+.la-container,a{
+    text-align: center;
+}
+
+.form-container{
+    background-image: url(/solo-img/pexels-tima-miroshnichenko-6195210.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-attachment: fixed; 
+    h1,h4{
+        text-align: center;
+        color: white;
+        padding: 40px;
+        width: 80%;
+        margin: auto;
+       
+    }
+}
+
+#Services{
+    text-align: center;
+    color: rgb(17, 27, 3);
+}
+
+.footer-div{
+    
+    background-color: black;
+    padding: 40px;
+    color: white;
+ }
+ 
+ .tusa{ 
+     display: flex;
+     text-align: justify;
+     justify-content: space-between ;
+     
+ }
+ .footer-text-div h5{
+    font-size: large;
+    text-decoration: none;
+}
+.footer-text-div p5{
+font-size: 15px;
+line-height: 30px;
+text-decoration: none;
+
+
+}
+
+.footer-text-div p5 li:hover{
+color: red;
+text-decoration: underline;
+justify-self: stretch;
+opacity: 0.5;
+}
+.social-media-logos {
+    font-size: x-large;
+   margin-top: 40px;
+   
+   
+}
+.social-media-logos a{
+    padding: 10px;
+    color: white;
+}
+
+.line{
+    width: 150px;
+}
+.english{
+    font-size: 18px;
+}
+
+
+input[type = 'tel']{
+    border-radius: 8px;
+    padding: 5px;
+    width: 35%;
+    font-size: large;
+    
+
+}
+select{
+    background-color: gray;
+    padding: 5px;
+    border-radius: 8px;
+    width: 35%;
+    font-size: large;
+}
+textarea{
+    border-radius: 8px;
+    padding: 5px;
+    width: 35%;
+    font-size: large;
+    
+}    
+.titl{
+    width: 60%;
+    margin: auto;
+    font-size: large;
+    background-color: #f58803;
+    padding: 15px;
+    border-radius: 8px 8px 0 0;
+}
+label{
+    color: rgb(39, 8, 243);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+
+@media (min-width:799px) and (max-width:1162px) {
+    }
+@media screen and  (max-width:630px){
+    .tusa{ 
+        display: block;
+        
+        text-align: center;
+        justify-content: space-between ;
+        
+    }
+
+}

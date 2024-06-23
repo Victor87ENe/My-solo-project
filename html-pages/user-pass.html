@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>creat user-name and password</title>
+    <link rel="stylesheet" href="/css-files/user-pass.css">
+</head>
+<body>
+    
+
+    <h2>Please creat user-name and password</h2>
+
+
+    <h1>Signup</h1>
+    <form id="signupForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <button type="submit">Signup</button>
+    </form>
+
+
+
+
+    <!-- <script src="/js-files/user-pass.js"></script> -->
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent form submission
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Save username and password to localStorage
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', password);
+
+            alert('Signup successful!');
+            window.location.href = 'login.html'; // Redirect to login page
+        });
+    </script>
+
+</body>
+</html>
